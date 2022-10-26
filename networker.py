@@ -28,3 +28,22 @@ class Networker:
         else:
             return uri
 
+    def create_playlist(user_name, date):
+        playlist_name = f"{date} Billboard 100"
+
+        try:
+            response = sp.user_playlist_create(user=user_name, name=playlist_name, public=False, collaborative=False)
+        except:
+            print("Error creating playlist.")
+        else:
+            playlist_id = response["id"]
+            return playlist_id
+
+    def add_tracks_to_playlist(playlist_id, songs):
+
+        try:
+            sp.playlist_add_items(playlist_id, songs)
+        except:
+            print("Error adding tracks to playlist.")
+        else:
+            print("Succesfully added tracks to playlist.")
