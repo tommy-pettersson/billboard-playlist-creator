@@ -1,4 +1,3 @@
-from pprint import pprint
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy
@@ -9,6 +8,15 @@ scope = "playlist-modify-private"
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 
 class Networker:
+
+    def get_current_user():
+        try:
+            response = sp.current_user()
+        except:
+            print("Error getting user data.")
+        else:
+            user_name = response["display_name"]
+            return user_name
 
     def get_song_uri(song_name):
         try:
