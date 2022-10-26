@@ -24,7 +24,6 @@ class Networker:
             uri = response["tracks"]["items"][0]["uri"]
         except:
             print("Song not found.")
-            pass
         else:
             return uri
 
@@ -40,7 +39,6 @@ class Networker:
             return playlist_id
 
     def add_tracks_to_playlist(playlist_id, songs):
-
         try:
             sp.playlist_add_items(playlist_id, songs)
         except:

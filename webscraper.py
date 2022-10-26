@@ -1,13 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://www.billboard.com/charts/hot-100/2002-08-17/"
+URL = "https://www.billboard.com/charts/hot-100/"
 
 class Webscraper:
 
-    def get_song_names():
+    def get_song_names(date):
         try:
-            response = requests.get(url=URL)
+            response = requests.get(url=f"{URL}{date}")
             response.raise_for_status()
         except requests.HTTPError as e:
             print(e)
